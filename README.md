@@ -1,6 +1,6 @@
 # Entangled
 
-Entangled is a tab synchronization extension for chromiuk-based browsers. It allows you to synchronize your tabs across multiple devices, making it easy to switch between devices and pick up where you left off.
+Entangled is a tab synchronization extension for chromium-based browsers. It allows you to synchronize your tabs across multiple devices, making it easy to switch between devices and pick up where you left off.
 
 ## Installation
 
