@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { useEffect, useState } from 'react';
-import { Account, Client, Databases, Query } from 'appwrite';
+import { Account, Client, Databases, ID, Permission, Role } from 'appwrite';
 
 class Hook {
   constructor(value, set) {
@@ -23,8 +22,8 @@ class Session {
 
 function tabItem(tab, session, hooks) {
   return (
-    <div>
-      <a onClick={() => { deleteTab(tab, session, hooks) }} href={tab.url} target="_blank" rel="noreferrer">{tab.url}</a>
+    <div className="tab">
+      <div onClick={() => { deleteTab(tab, session, hooks) }}>{tab.url}</div>
     </div>
   );
 }
@@ -32,8 +31,10 @@ function tabItem(tab, session, hooks) {
 function Login(session, hooks) {
   async function submitLogin() {
     try {
-      let res = await session.account.createEmailSession(hooks.email.value, hooks.email.password);
+      let res = await session.account.createEmailSession(hooks.email.value, hooks.password.value);
       hooks.uid.set(res.$id);
+      hooks.loggedIn.set(true);
+      hooks.existingSession.set(true);
       await getTabs(res.$id, hooks);
     } catch (e) {
       console.error(e);
@@ -55,8 +56,13 @@ async function getSession(session, hooks) {
   try {
     let res = await session.account.get();
     hooks.uid.set(res.$id);
+    hooks.loggedIn.set(true);
+    hooks.existingSession.set(true);
     await getTabs(res.$id, session, hooks);
   } catch (e) {
+    hooks.uid.set(null);
+    hooks.loggedIn.set(false);
+    hooks.existingSession.set(false);
     console.error(e);
   }
 }
@@ -83,9 +89,32 @@ async function deleteTab(tab, session, hooks) {
       tab.$id
     );
     await getTabs(hooks.uid.value, session, hooks);
+    window.open(tab.url, "_blank", "noopener,noreferrer");
   } catch (e) {
     console.error(e);
   }
+}
+
+async function addTab(session, hooks) {
+  try {
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    await session.database.createDocument(
+      "650a25486a53f6902000",
+      "650a2552869d0ff7adf9",
+      ID.unique(),
+      { url: tab.url },
+      [
+        Permission.read(Role.user(hooks.uid.value)),
+        Permission.write(Role.user(hooks.uid.value)),
+        Permission.update(Role.user(hooks.uid.value)),
+        Permission.delete(Role.user(hooks.uid.value)),
+      ]
+    );
+    await getTabs(hooks.uid.value, session, hooks);
+  } catch (e) {
+    console.error(e);
+  }
+
 }
 
 function App() {
@@ -94,11 +123,15 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [tabs, setTabs] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [existingSession, setExistingSession] = useState(true);
   const hooks = {
     uid: new Hook(uid, setUid),
     email: new Hook(email, setEmail),
     password: new Hook(password, setPassword),
-    tabs: new Hook(tabs, setTabs)
+    tabs: new Hook(tabs, setTabs),
+    loggedIn: new Hook(loggedIn, setLoggedIn),
+    existingSession: new Hook(existingSession, setExistingSession)
   }
 
   useEffect(() => {
@@ -108,9 +141,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {uid === null ? "NOT LOGGED IN" : "LOGGED IN"}
-        {uid === null ? Login(session, hooks) : null}
-        {uid !== null ? tabs.map((tab) => tabItem(tab, session, hooks)) : null}
+        {loggedIn ? <div id="save-button" onClick={() => { addTab(session, hooks) }}>Save Tab</div> : null}
+        {(!loggedIn && !existingSession) ? Login(session, hooks) : null}
+        <div id="tab-list">
+          {loggedIn ? tabs.map((tab) => tabItem(tab, session, hooks)) : null}
+        </div>
       </header>
     </div>
   );

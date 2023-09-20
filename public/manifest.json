@@ -11,5 +11,9 @@
 	  "16": "logo192.png",
 	  "48": "logo192.png",
 	  "128": "logo192.png"
-  }
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAggXGZ38Hvv/+AFK6/rvQCVMBJBSAlsEJVlwBIOD3vGSvfimaauu1CQ3eUdmAQpFnG7FAZG1cYK8RPuNOn0Pnfb1qtF9zR0MyOjoIjXZeAUjLgze5/fN3f2HuGNAsk13xbaEKFX/IyRfL0kOXsS9bYB7wPdoa6AA+BOO2v0exagacZtKvCQ1lUBt9L9/WDYAZKYjnYRWYj0MYCc/+0KoH4fBu+3TLFPyChuKUKvRtnaDmN9l6I5cJSFQ3znd62x81wQB67EXopoPaFRc5m+NmXKr93B65wJWv6g8TQtcLKUB02gOo8TOd06CUeqAATSeGamNZqDU/3kbkWfPO48xKtQIDAQAB",
+  "permissions": [
+    "activeTab"
+  ]
 }
