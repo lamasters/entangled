@@ -17,9 +17,6 @@
   top: 50px;
   width: 80%;
   height: 300px;
-  display: flex;
-  flex-direction: column;
-  flex-flow: row wrap;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -32,13 +29,19 @@
   margin-top: 5px;
   margin-bottom: 5px;
   height: 25px;
-  text-decoration: underline;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.tab:hover {
+.tab-button {
+  text-decoration: underline;
+}
+
+.tab-button:hover {
   cursor: pointer;
-  text-decoration: wavy;
+  text-decoration: dashed;
 }
 
 #save-button {

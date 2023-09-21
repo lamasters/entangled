@@ -2,10 +2,11 @@ import { ID, Permission, Role } from 'appwrite';
 
 export function tabItem(tab, session, hooks) {
     let url = tab.url.replace("https://", "").replace("http://", "");
-    if (url.length > 40) url = url.substring(0, 40) + "...";
+    if (url.length > 38) url = url.substring(0, 38) + "...";
     return (
         <div className="tab">
-            <div onClick={() => { deleteTab(tab, session, hooks) }}>{url}</div>
+            <div className="tab-button" onClick={() => { deleteTab(tab, session, hooks, false) }}>X</div>
+            <div className="tab-button" onClick={() => { deleteTab(tab, session, hooks, true) }}>{url}</div>
         </div>
     );
 }
@@ -22,7 +23,7 @@ export async function getTabs(uid, session, hooks) {
     }
 }
 
-export async function deleteTab(tab, session, hooks) {
+export async function deleteTab(tab, session, hooks, openTab) {
     try {
         await session.database.deleteDocument(
             "650a25486a53f6902000",
@@ -30,7 +31,7 @@ export async function deleteTab(tab, session, hooks) {
             tab.$id
         );
         await getTabs(hooks.uid.value, session, hooks);
-        window.open(tab.url, "_blank", "noopener,noreferrer");
+        if (openTab) window.open(tab.url, "_blank", "noopener,noreferrer");
     } catch (e) {
         console.error(e);
     }
