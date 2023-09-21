@@ -1,9 +1,11 @@
 import { ID, Permission, Role } from 'appwrite';
 
 export function tabItem(tab, session, hooks) {
+    let url = tab.url.replace("https://", "").replace("http://", "");
+    if (url.length > 40) url = url.substring(0, 40) + "...";
     return (
         <div className="tab">
-            <div onClick={() => { deleteTab(tab, session, hooks) }}>{tab.url}</div>
+            <div onClick={() => { deleteTab(tab, session, hooks) }}>{url}</div>
         </div>
     );
 }

@@ -36,9 +36,7 @@ function App() {
       <header className="App-header">
         {loggedIn ? <div id="save-button" onClick={() => { addTab(session, hooks) }}>Save Tab</div> : null}
         {(!loggedIn && !existingSession) ? createSession(session, hooks) : null}
-        <div id="tab-list">
-          {loggedIn ? tabs.map((tab) => tabItem(tab, session, hooks)) : null}
-        </div>
+        {loggedIn ? <div id="tab-list">{tabs.map((tab) => tabItem(tab, session, hooks))}</div> : null}
       </header>
     </div>
   );

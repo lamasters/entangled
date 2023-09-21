@@ -2,19 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,41 +13,32 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #tab-list {
+  top: 50px;
   width: 80%;
+  height: 300px;
   display: flex;
   flex-direction: column;
+  flex-flow: row wrap;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .tab {
+  position: relative;
   width: 100%;
-  color: #282c34;
-  background-color: #87c2d4;
+  color: white;
   overflow: hidden;
   margin-top: 5px;
   margin-bottom: 5px;
   height: 25px;
-  border-radius: 10px;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .tab:hover {
   cursor: pointer;
-  background-color: #61dafb;
+  text-decoration: wavy;
 }
 
 #save-button {
@@ -70,12 +50,30 @@
   height: 40px;
   line-height: 40px;
   font-weight: bold;
-  color: #282c34;
-  background-color: #61dafb;
-  border-radius: 10px;
+  color: white;
+  text-decoration: underline;
 }
 
 #save-button:hover {
   cursor: pointer;
-  background-color: #87c2d4;
+  text-decoration: wavy;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+  opacity: 0.7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  opacity: 0.7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
+  opacity: 0.7;
 }
