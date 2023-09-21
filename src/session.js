@@ -25,13 +25,16 @@ export function createSession(session, hooks) {
     }
 
     return (
-        <div>
-            <label>Email:</label>
-            <input onChange={(e) => hooks.email.set(e.target.value)} type="text" />
-            <label>Password:</label>
-            <input onChange={(e) => hooks.password.set(e.target.value)} type="password" />
-            <button onClick={submitLogin}>Login</button>
-        </div>
+        <>
+            <div>
+                <label className="login-item">Email:</label>
+                <input onChange={(e) => hooks.email.set(e.target.value)} type="text" />
+                <label className="login-item">Password:</label>
+                <input onChange={(e) => hooks.password.set(e.target.value)} type="password" />
+            </div>
+            <div id="login-button" onClick={submitLogin}>Login</div>
+            <a id="signup">Need an account?</a>
+        </>
     );
 }
 

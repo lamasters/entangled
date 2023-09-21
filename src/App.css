@@ -80,3 +80,37 @@
   background: #ddd;
   opacity: 0.7;
 }
+
+.login-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#login-button {
+  font-size: 14px;
+  text-align: center;
+  margin: 10px;
+  width: 50px;
+  height: 25px;
+  line-height: 25px;
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 5px;
+}
+
+#login-button:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+#signup {
+  margin: 10px;
+  text-decoration: underline;
+}
+
+#signup:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
