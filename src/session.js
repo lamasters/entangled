@@ -28,12 +28,12 @@ export function createSession(session, hooks) {
         <>
             <div>
                 <label className="login-item">Email:</label>
-                <input onChange={(e) => hooks.email.set(e.target.value)} type="text" />
+                <input onChange={(e) => hooks.email.set(e.target.value)} type="email" />
                 <label className="login-item">Password:</label>
                 <input onChange={(e) => hooks.password.set(e.target.value)} type="password" />
             </div>
             <div id="login-button" onClick={submitLogin}>Login</div>
-            <a id="signup">Need an account?</a>
+            <a href="https://entangled-tabs.vercel.app" target="_blank" rel="noreferrer" id="signup">Need an account?</a>
         </>
     );
 }
