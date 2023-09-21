@@ -2,6 +2,8 @@
 
 Entangled is a tab synchronization extension for chromium-based browsers. It allows you to synchronize your tabs across multiple devices, making it easy to switch between devices and pick up where you left off.
 
+Visit [entangled-tabs.vercel.app](https://entangled-tabs.vercel.app) to create an account.
+
 ## Installation
 
 To install Entangled, follow these steps:
