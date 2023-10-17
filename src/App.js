@@ -1,4 +1,5 @@
 import './App.css';
+import { Loader } from './components/Loader.js';
 import { createSession, getSession, Session } from './session.js';
 import { addTab, tabItem } from './tabs.js';
 import { useEffect, useState } from 'react';
@@ -35,7 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {loggedIn ? <div id="save-button" onClick={() => { addTab(session, hooks) }}>Save Tab</div> : null}
-        {loggedIn ? <div id="tab-list">{tabs.map((tab) => tabItem(tab, session, hooks))}</div> : null}
+        {loggedIn ? <div id="tab-list">{tabs.map((tab) => tabItem(tab, session, hooks))}</div> : <Loader />}
         {(!loggedIn && !existingSession) ? createSession(session, hooks) : null}
       </header>
     </div>

@@ -1,0 +1,38 @@
+@keyframes pulse {
+	0% {
+		opacity: 0.0;
+		width: 0px;
+		height: 0px;
+		top: 50%;
+		left: 50%;
+	}
+	50% {
+		opacity: 1.0;
+		width: 100px;
+		height: 100px;
+		top: calc(50% - 50px);
+		left: calc(50% - 50px);
+	}
+	100% {
+		opacity: 0.0;
+		width: 200px;
+		height: 200px;
+		top: calc(50% - 100px);
+		left: calc(50% - 100px);
+	}
+}
+
+.loader {
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	left: 50%;
+	border-style: solid;
+	border-width: 2.5px;
+	border-radius: 100%;
+	border-color: #fff;
+	animation-name: pulse;
+	animation-duration: 3.0s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease;
+}
