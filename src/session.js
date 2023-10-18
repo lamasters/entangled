@@ -18,7 +18,7 @@ export function createSession(session, hooks) {
             hooks.uid.set(res.$id);
             hooks.loggedIn.set(true);
             hooks.existingSession.set(true);
-            await getTabs(res.$id, hooks);
+            await getTabs(session, hooks);
         } catch (e) {
             console.error(e);
         }
@@ -44,7 +44,7 @@ export async function getSession(session, hooks) {
         hooks.uid.set(res.$id);
         hooks.loggedIn.set(true);
         hooks.existingSession.set(true);
-        await getTabs(res.$id, session, hooks);
+        await getTabs(session, hooks);
     } catch (e) {
         hooks.uid.set(null);
         hooks.loggedIn.set(false);
