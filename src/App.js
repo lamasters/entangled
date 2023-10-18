@@ -2,7 +2,7 @@ import './App.css';
 import { Loader } from './components/Loader.js';
 import { createSession, getSession, Session } from './session.js';
 import { addTab, tabItem } from './tabs.js';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 class Hook {
   constructor(value, set) {
     this.value = value;
@@ -11,7 +11,7 @@ class Hook {
 }
 
 function App() {
-  const session = new Session();
+  const session = useMemo(() => { return new Session() }, []);
   const [uid, setUid] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,18 +19,20 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [existingSession, setExistingSession] = useState(true);
 
-  const hooks = {
-    uid: new Hook(uid, setUid),
-    email: new Hook(email, setEmail),
-    password: new Hook(password, setPassword),
-    tabs: new Hook(tabs, setTabs),
-    loggedIn: new Hook(loggedIn, setLoggedIn),
-    existingSession: new Hook(existingSession, setExistingSession)
-  }
+  const hooks = useMemo(() => {
+    return {
+      uid: new Hook(uid, setUid),
+      email: new Hook(email, setEmail),
+      password: new Hook(password, setPassword),
+      tabs: new Hook(tabs, setTabs),
+      loggedIn: new Hook(loggedIn, setLoggedIn),
+      existingSession: new Hook(existingSession, setExistingSession)
+    }
+  }, [uid, setUid, email, setEmail, password, setPassword, tabs, setTabs, loggedIn, setLoggedIn, existingSession, setExistingSession]);
 
   useEffect(() => {
     getSession(session, hooks);
-  }, []);
+  }, [session, hooks]);
 
   return (
     <div className="App">
