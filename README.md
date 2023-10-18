@@ -4,6 +4,8 @@ Entangled is a tab synchronization extension for chromium-based browsers. It all
 
 Visit [entangled-tabs.vercel.app](https://entangled-tabs.vercel.app) to create an account.
 
+[![Entangled CI](https://github.com/lamasters/entangled/actions/workflows/node.js.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/node.js.yml) [![ESLint](https://github.com/lamasters/entangled/actions/workflows/eslint.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/eslint.yml)
+
 ## Installation
 
 To install Entangled, follow these steps:
