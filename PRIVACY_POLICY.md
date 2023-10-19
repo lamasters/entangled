@@ -11,13 +11,16 @@ Entangled ("we" or "us") is committed to protecting your privacy and ensuring th
 ### Information We Collect
 
 We collect and store login information provided by the user for the purpose of enabling the features and functionalities of our Chrome extension. This information may include, but is not limited to:
-Usernames
-Passwords
-Other login credentials
+
+- Usernames
+- Passwords
+- Other login credentials
+- Tab titles
+- Tab URLs
 
 ### How We Use Your Information
 
-We use the login information solely for the purpose of facilitating the functionality of our Chrome extension. Your data will not be shared, sold, or used for any other purposes.s
+We use the login information solely for the purpose of facilitating the functionality of our Chrome extension. Your data will not be shared, sold, or used for any other purposes.
 
 ### Data Sharing and Selling
 
