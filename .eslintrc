@@ -4,6 +4,7 @@
       "react-app/jest"
     ],
     "env": {
-        "webextensions": true
+        "webextensions": true,
+        "NODE_ENV": "development"
     }
 }
