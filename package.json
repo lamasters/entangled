@@ -1,6 +1,6 @@
 {
   "name": "entanlged",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -70,15 +70,6 @@
     "build": "INLINE_RUNTIME_CHUNK=false node scripts/build.js",
     "test": "node scripts/test.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "env": {
-      "webextensions": true
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -142,9 +133,13 @@
     ],
     "resetMocks": true
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": false,
+    "semi": true,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "arrowParens": "avoid"
   }
 }
