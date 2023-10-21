@@ -61,7 +61,7 @@ export async function addTab(session, hooks) {
       "650a25486a53f6902000",
       "650a2552869d0ff7adf9",
       ID.unique(),
-      { url: tab.url, title: tab.title },
+      { url: tab.url, title: title },
       [
         Permission.read(Role.user(hooks.uid.value)),
         Permission.write(Role.user(hooks.uid.value)),

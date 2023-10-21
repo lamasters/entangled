@@ -2,13 +2,21 @@
 
 Entangled is a tab synchronization extension for chromium-based browsers. It allows you to synchronize your tabs across multiple devices, making it easy to switch between devices and pick up where you left off.
 
+Available on the Chrome Web Store. Visit [Entangled](https://chrome.google.com/webstore/detail/entangled/bpladjoppoackkpoegnmfbbccemijcec) to install!
+
 Visit [entangled-tabs.vercel.app](https://entangled-tabs.vercel.app) to create an account.
 
 [![Entangled CI](https://github.com/lamasters/entangled/actions/workflows/node.js.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/node.js.yml) [![ESLint](https://github.com/lamasters/entangled/actions/workflows/eslint.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/eslint.yml)
 
 ## Installation
 
-To install Entangled, follow these steps:
+To install Entangled from the from the Chrome Web Store, follow these steps:
+
+1. Navigate to the [extension download page](https://chrome.google.com/webstore/detail/entangled/bpladjoppoackkpoegnmfbbccemijcec)
+2. Click `Add to Chrome`
+3. You're done!
+
+To install Entangled from source, follow these steps:
 
 1. Download the latest release from the [Entangled GitHub repository](https://github.com/lamasters/entangled/releases).
 2. Extract the downloaded ZIP file to a directory of your choice.
