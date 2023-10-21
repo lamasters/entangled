@@ -2,11 +2,7 @@ body {
   width: 600px;
   height: 400px;
   margin: 0;
-  font-family: Consolas, 'Courier New', monospace;
+  font-family: 'Space Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: Consolas, 'Courier New', monospace;
 }
