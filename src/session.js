@@ -14,6 +14,7 @@ export class Session {
 export function createSession(session, hooks) {
   async function submitLogin() {
     try {
+      hooks.loading.set(true);
       let res = await session.account.createEmailSession(
         hooks.email.value,
         hooks.password.value,
@@ -24,6 +25,8 @@ export function createSession(session, hooks) {
       await getTabs(session, hooks);
     } catch (e) {
       console.error(e);
+    } finally {
+      hooks.loading.set(false);
     }
   }
 
@@ -55,6 +58,7 @@ export function createSession(session, hooks) {
 
 export async function getSession(session, hooks) {
   try {
+    hooks.loading.set(true);
     let res = await session.account.get();
     hooks.uid.set(res.$id);
     hooks.loggedIn.set(true);
@@ -65,5 +69,7 @@ export async function getSession(session, hooks) {
     hooks.loggedIn.set(false);
     hooks.existingSession.set(false);
     console.error(e);
+  } finally {
+    hooks.loading.set(false);
   }
 }

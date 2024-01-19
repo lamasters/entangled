@@ -20,6 +20,7 @@ function App() {
   const [tabs, setTabs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [existingSession, setExistingSession] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const hooks = useMemo(() => {
     return {
@@ -29,6 +30,7 @@ function App() {
       tabs: new Hook(tabs, setTabs),
       loggedIn: new Hook(loggedIn, setLoggedIn),
       existingSession: new Hook(existingSession, setExistingSession),
+      loading: new Hook(loading, setLoading),
     };
   }, [
     uid,
@@ -43,6 +45,8 @@ function App() {
     setLoggedIn,
     existingSession,
     setExistingSession,
+    loading,
+    setLoading,
   ]);
 
   useEffect(() => {
@@ -66,10 +70,9 @@ function App() {
           <div id="tab-list">
             {tabs.map(tab => tabItem(tab, session, hooks))}
           </div>
-        ) : (
-          <Loader />
-        )}
+        ) : null}
         {!loggedIn && !existingSession ? createSession(session, hooks) : null}
+        {loading ? <Loader /> : null}
       </header>
     </div>
   );
