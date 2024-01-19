@@ -1,3 +1,4 @@
+import { APPWRITE_CONFIG } from "./constants";
 import { ID, Permission, Role } from "appwrite";
 
 export function tabItem(tab, session, hooks) {
@@ -29,8 +30,8 @@ export function tabItem(tab, session, hooks) {
 export async function getTabs(session, hooks) {
   try {
     let tabs = await session.database.listDocuments(
-      "650a25486a53f6902000",
-      "650a2552869d0ff7adf9",
+      APPWRITE_CONFIG.DATABASE_ID,
+      APPWRITE_CONFIG.BUCKET_ID,
     );
     hooks.tabs.set(tabs.documents);
   } catch (e) {
@@ -41,8 +42,8 @@ export async function getTabs(session, hooks) {
 export async function deleteTab(tab, session, hooks, openTab) {
   try {
     await session.database.deleteDocument(
-      "650a25486a53f6902000",
-      "650a2552869d0ff7adf9",
+      APPWRITE_CONFIG.DATABASE_ID,
+      APPWRITE_CONFIG.BUCKET_ID,
       tab.$id,
     );
     await getTabs(session, hooks);
@@ -58,8 +59,8 @@ export async function addTab(session, hooks) {
     let title = tab.title ? tab.title : tab.url;
     if (title.length > 37) title = title.substring(0, 37) + "...";
     await session.database.createDocument(
-      "650a25486a53f6902000",
-      "650a2552869d0ff7adf9",
+      APPWRITE_CONFIG.DATABASE_ID,
+      APPWRITE_CONFIG.BUCKET_ID,
       ID.unique(),
       { url: tab.url, title: title },
       [

@@ -1,11 +1,12 @@
+import { APPWRITE_CONFIG } from "./constants.js";
 import { getTabs } from "./tabs.js";
 import { Account, Client, Databases } from "appwrite";
 
 export class Session {
   constructor() {
     this.client = new Client()
-      .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("650a139471b25458406f");
+      .setEndpoint(APPWRITE_CONFIG.ENDPOINT)
+      .setProject(APPWRITE_CONFIG.PROJECT_ID);
     this.account = new Account(this.client);
     this.database = new Databases(this.client);
   }
