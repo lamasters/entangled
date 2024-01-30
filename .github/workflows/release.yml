@@ -22,7 +22,7 @@ jobs:
     - run: npm run build --if-present
     - run: mv build entangled && zip -r entangled.zip entangled
     - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: entangled.zip
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: entangled.zip
