@@ -1,7 +1,7 @@
 {
   "name": "Entangled",
   "description": "Sync tabs between chromium based browsers",
-  "version": "1.0",
+  "version": "1.2.0",
   "manifest_version": 3,
   "action": {
 	  "default_popup": "index.html",
