@@ -32,22 +32,7 @@ function App() {
       existingSession: new Hook(existingSession, setExistingSession),
       loading: new Hook(loading, setLoading),
     };
-  }, [
-    uid,
-    setUid,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    tabs,
-    setTabs,
-    loggedIn,
-    setLoggedIn,
-    existingSession,
-    setExistingSession,
-    loading,
-    setLoading,
-  ]);
+  }, []);
 
   useEffect(() => {
     getSession(session, hooks);
