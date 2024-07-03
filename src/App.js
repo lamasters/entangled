@@ -32,7 +32,7 @@ function App() {
       existingSession: new Hook(existingSession, setExistingSession),
       loading: new Hook(loading, setLoading),
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     getSession(session, hooks);
