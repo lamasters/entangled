@@ -58,11 +58,16 @@
 
 .tab-button {
   text-decoration: underline;
+  color: white;
 }
 
 .tab-button:hover {
   cursor: pointer;
   text-decoration: dashed;
+}
+
+.tab-button:visited {
+  color: white;
 }
 
 #save-button {

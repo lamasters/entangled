@@ -15,14 +15,17 @@ export function tabItem(tab, session, setTabs) {
       >
         X
       </div>
-      <div
+      <a
         className="tab-button"
         onClick={() => {
           deleteTab(tab, session, setTabs, true);
         }}
+        href={tab.url}
+        target="_blank"
+        rel="noreferrer"
       >
         {title}
-      </div>
+      </a>
     </div>
   );
 }
@@ -39,7 +42,7 @@ export async function getTabs(session, setTabs) {
   }
 }
 
-export async function deleteTab(tab, session, setTabs, openTab) {
+export async function deleteTab(tab, session, setTabs) {
   try {
     await session.database.deleteDocument(
       APPWRITE_CONFIG.DATABASE_ID,
@@ -47,17 +50,12 @@ export async function deleteTab(tab, session, setTabs, openTab) {
       tab.$id,
     );
     await getTabs(session, setTabs);
-    if (openTab)
-      setTimeout(() => {
-        window.open(tab.url, "_blank", "noopener,noreferrer");
-      }, 1);
   } catch (e) {
     console.error(e);
   }
 }
 
 export async function addTab(session, user, url, setTabs) {
-  console.log("Adding tab: ", url);
   try {
     if (!url.startsWith("http")) url = "https://" + url;
     let title = url;
