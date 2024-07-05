@@ -28,16 +28,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Enter extension directory
-        run: cd ./entangled
-
       - name: Install ESLint
         run: |
           npm install eslint@8.10.0
           npm install @microsoft/eslint-formatter-sarif@2.1.7
+          npm install eslint-config-react-app@7.0.1
 
       - name: Run ESLint on Entangled Extension
-        run: npx eslint ./src
+        run: cd entangled && npx eslint ./src
           --config .eslintrc
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
@@ -50,16 +48,8 @@ jobs:
           sarif_file: eslint-ext-results.sarif
           wait-for-processing: true
 
-      - name: Enter web directory
-        run: cd ../entangled-web
-
-      - name: Install ESLint
-        run: |
-          npm install eslint@8.10.0
-          npm install @microsoft/eslint-formatter-sarif@2.1.7
-
       - name: Run ESLint on Entangled Web
-        run: npx eslint ./src
+        run: cd entangled-web && npx eslint ./src
           --config .eslintrc
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
