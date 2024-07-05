@@ -12,22 +12,25 @@ export class Session {
   }
 }
 
-export function createSession(session, hooks) {
+export function createSession(
+  session,
+  user,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  setLoading,
+) {
   async function submitLogin() {
     try {
-      hooks.loading.set(true);
-      let res = await session.account.createEmailSession(
-        hooks.email.value,
-        hooks.password.value,
-      );
-      hooks.uid.set(res.$id);
-      hooks.loggedIn.set(true);
-      hooks.existingSession.set(true);
-      await getTabs(session, hooks);
+      setLoading(true);
+      let res = await session.account.createEmailSession(email, password);
+      user.set(res.$id);
+      await getTabs(session, user);
     } catch (e) {
       console.error(e);
     } finally {
-      hooks.loading.set(false);
+      setLoading(false);
     }
   }
 
@@ -35,12 +38,9 @@ export function createSession(session, hooks) {
     <>
       <div>
         <label className="login-item">Email:</label>
-        <input onChange={e => hooks.email.set(e.target.value)} type="email" />
+        <input onChange={e => setEmail(e.target.value)} type="email" />
         <label className="login-item">Password:</label>
-        <input
-          onChange={e => hooks.password.set(e.target.value)}
-          type="password"
-        />
+        <input onChange={e => setPassword(e.target.value)} type="password" />
       </div>
       <div id="login-button" onClick={submitLogin}>
         Login
@@ -57,20 +57,20 @@ export function createSession(session, hooks) {
   );
 }
 
-export async function getSession(session, hooks) {
+export async function getSession(session, user, setTabs, setLoading) {
   try {
-    hooks.loading.set(true);
+    setLoading(true);
     let res = await session.account.get();
-    hooks.uid.set(res.$id);
-    hooks.loggedIn.set(true);
-    hooks.existingSession.set(true);
-    await getTabs(session, hooks);
+    if (!res.$id) {
+      user.set(null);
+    } else {
+      user.set(res.$id);
+      await getTabs(session, setTabs);
+    }
   } catch (e) {
-    hooks.uid.set(null);
-    hooks.loggedIn.set(false);
-    hooks.existingSession.set(false);
+    user.set(null);
     console.error(e);
   } finally {
-    hooks.loading.set(false);
+    setLoading(false);
   }
 }
