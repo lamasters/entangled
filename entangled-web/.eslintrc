@@ -3,9 +3,6 @@
     "eslint:recommended",
     "react-app"
   ],
-  "env": {
-      "webextensions": true
-  },
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
