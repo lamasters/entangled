@@ -41,6 +41,12 @@ jobs:
           --output-file eslint-ext-results.sarif
         continue-on-error: true
 
+      - name: Upload extension analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: eslint-ext-results.sarif
+          wait-for-processing: true
+
       - name: Run ESLint on Entangled Web
         run: npx eslint ./entangled-web/src
           --config .eslintrc
@@ -48,12 +54,6 @@ jobs:
           --format @microsoft/eslint-formatter-sarif
           --output-file eslint-web-results.sarif
         continue-on-error: true
-
-      - name: Upload extension analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: eslint-ext-results.sarif
-          wait-for-processing: true
       
       - name: Upload web analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v2
