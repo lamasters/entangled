@@ -47,7 +47,10 @@ export async function deleteTab(tab, session, setTabs, openTab) {
       tab.$id,
     );
     await getTabs(session, setTabs);
-    if (openTab) window.open(tab.url, "_blank", "noopener,noreferrer");
+    if (openTab)
+      setTimeout(() => {
+        window.open(tab.url, "_blank", "noopener,noreferrer");
+      }, 1);
   } catch (e) {
     console.error(e);
   }
