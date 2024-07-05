@@ -33,16 +33,30 @@ jobs:
           npm install eslint@8.10.0
           npm install @microsoft/eslint-formatter-sarif@2.1.7
 
-      - name: Run ESLint
-        run: npx eslint ./src
+      - name: Run ESLint on Entangled Extension
+        run: npx eslint ./entangled/src
           --config .eslintrc
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
-          --output-file eslint-results.sarif
+          --output-file eslint-ext-results.sarif
         continue-on-error: true
 
-      - name: Upload analysis results to GitHub
+      - name: Run ESLint on Entangled Web
+        run: npx eslint ./entangled-web/src
+          --config .eslintrc
+          --ext .js,.jsx,.ts,.tsx
+          --format @microsoft/eslint-formatter-sarif
+          --output-file eslint-web-results.sarif
+        continue-on-error: true
+
+      - name: Upload extension analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: eslint-results.sarif
+          sarif_file: eslint-ext-results.sarif
+          wait-for-processing: true
+      
+      - name: Upload web analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: eslint-web-results.sarif
           wait-for-processing: true
