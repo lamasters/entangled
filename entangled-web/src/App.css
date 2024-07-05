@@ -1,0 +1,138 @@
+.App {
+  text-align: center;
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#add-tab {
+  margin-bottom: 15px;
+}
+
+#submit-button {
+  font-family: 'Space Mono', monospace;
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 10px;
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
+  background: none;
+  border: none;
+}
+
+#submit-button:hover {
+  cursor: pointer;
+  text-decoration: wavy;
+}
+
+#tab-list {
+  top: 50px;
+  width: 60%;
+  min-width: 480px;
+  height: 75%;
+  margin-bottom: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.tab {
+  position: relative;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 35px;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.tab-button {
+  text-decoration: underline;
+}
+
+.tab-button:hover {
+  cursor: pointer;
+  text-decoration: dashed;
+}
+
+#save-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin-bottom: 10px;
+  width: 90px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
+}
+
+#save-button:hover {
+  cursor: pointer;
+  text-decoration: wavy;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+  opacity: 0.7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  opacity: 0.7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
+  opacity: 0.7;
+}
+
+.login-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#login-button {
+  font-size: 14px;
+  text-align: center;
+  margin: 10px;
+  width: 50px;
+  height: 25px;
+  line-height: 25px;
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 5px;
+}
+
+#login-button:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+#signup {
+  margin: 10px;
+  text-decoration: underline;
+  color: white;
+}
+
+#signup:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
