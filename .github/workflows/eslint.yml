@@ -45,6 +45,7 @@ jobs:
       - name: Upload extension analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v2
         with:
+          category: eslint-extension
           sarif_file: ./entangled/eslint-ext-results.sarif
           wait-for-processing: true
 
@@ -59,5 +60,6 @@ jobs:
       - name: Upload web analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v2
         with:
+          category: eslint-web
           sarif_file: ./entangled-web/eslint-web-results.sarif
           wait-for-processing: true
