@@ -14,49 +14,49 @@ function App() {
   const session = useMemo(() => {
     return new Session();
   }, []);
-  const [uid, setUid] = useState(null);
+  const [id, setId] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [tabs, setTabs] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [existingSession, setExistingSession] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const hooks = useMemo(() => {
-    return {
-      uid: new Hook(uid, setUid),
-      email: new Hook(email, setEmail),
-      password: new Hook(password, setPassword),
-      tabs: new Hook(tabs, setTabs),
-      loggedIn: new Hook(loggedIn, setLoggedIn),
-      existingSession: new Hook(existingSession, setExistingSession),
-      loading: new Hook(loading, setLoading),
-    };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const user = useMemo(() => {
+    return new Hook(id, setId);
+  }, [id]);
 
   useEffect(() => {
-    getSession(session, hooks);
-  }, [session, hooks]);
+    getSession(session, user, setTabs, setLoading);
+  }, [session, user]);
 
   return (
     <div className="App">
       <header className="App-header">
-        {loggedIn ? (
+        {id && !loading ? (
           <div
             id="save-button"
             onClick={() => {
-              addTab(session, hooks);
+              addTab(session, user, setTabs);
             }}
           >
             Save Tab
           </div>
         ) : null}
-        {loggedIn ? (
+        {id && !loading ? (
           <div id="tab-list">
-            {tabs.map(tab => tabItem(tab, session, hooks))}
+            {tabs.map(tab => tabItem(tab, session, setTabs))}
           </div>
         ) : null}
-        {!loggedIn && !existingSession ? createSession(session, hooks) : null}
+        {!id && !loading
+          ? createSession(
+              session,
+              user,
+              email,
+              setEmail,
+              password,
+              setPassword,
+              setLoading,
+            )
+          : null}
         {loading ? <Loader /> : null}
       </header>
     </div>
