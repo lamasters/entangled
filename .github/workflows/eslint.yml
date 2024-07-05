@@ -35,7 +35,7 @@ jobs:
 
       - name: Run ESLint on Entangled Extension
         run: npx eslint ./entangled/src
-          --config .eslintrc
+          --config ./entangled/.eslintrc
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
           --output-file eslint-ext-results.sarif
@@ -49,7 +49,7 @@ jobs:
 
       - name: Run ESLint on Entangled Web
         run: npx eslint ./entangled-web/src
-          --config .eslintrc
+          --config ./entangled-web/.eslintrc
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
           --output-file eslint-web-results.sarif
