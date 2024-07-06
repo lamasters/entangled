@@ -4,7 +4,7 @@ Entangled is a tab synchronization extension for chromium-based browsers. It all
 
 Available on the Chrome Web Store. Visit [Entangled](https://chrome.google.com/webstore/detail/entangled/bpladjoppoackkpoegnmfbbccemijcec) to install!
 
-Check out the web app to sync your tabs in Safari, Firefox, or mobile [entangled-tabs-web.vercel.app](https://entangled-tabs-web.vercel.app).
+Check out the web app to sync your tabs in Safari, Firefox, or mobile [entangledtabs.com](https://www.entangledtabs.com).
 
 Visit [entangled-tabs.vercel.app](https://entangled-tabs.vercel.app) to create an account.
 
