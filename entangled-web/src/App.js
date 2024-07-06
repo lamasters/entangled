@@ -68,6 +68,14 @@ function App() {
             setLoading,
           )
         : null}
+      <a
+        href="https://chromewebstore.google.com/detail/entangled/bpladjoppoackkpoegnmfbbccemijcec"
+        target="_blank"
+        rel="noreferrer"
+        id="extension-link"
+      >
+        Get the browser extension
+      </a>
       {loading ? <Loader /> : null}
     </div>
   );

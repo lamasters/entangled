@@ -141,3 +141,19 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+#extension-link {
+  margin-bottom: 10px;
+  text-decoration: underline;
+  color: white;
+  font-size: 18px;
+}
+
+#extension-link:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#extension-link:visited {
+  color: white;
+}
