@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       {id && !loading ? (
         <>
-          <h1>My Tabs</h1>
+          <h2>My Tabs</h2>
           <form
             id="add-tab"
             onSubmit={e => {
