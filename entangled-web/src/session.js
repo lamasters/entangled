@@ -35,6 +35,8 @@ export function createSession(
 
   return (
     <>
+      <h1>Entangled</h1>
+      <h2>Sync you tabs between any browsers</h2>
       <div>
         <label className="login-item">Email:</label>
         <input onChange={e => setEmail(e.target.value)} type="email" />
