@@ -52,6 +52,19 @@ function App() {
               Save
             </button>
           </form>
+          <div
+            id="clipboard-tab"
+            onClick={async () => {
+              try {
+                const copiedUrl = await navigator.clipboard.readText();
+                addTab(session, user, copiedUrl, setTabs);
+              } catch (error) {
+                console.log("Failed to read clipboard");
+              }
+            }}
+          >
+            Save From Clipboard
+          </div>
           <div id="tab-list">
             {tabs.map(tab => tabItem(tab, session, setTabs))}
           </div>

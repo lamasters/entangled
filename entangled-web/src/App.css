@@ -157,3 +157,14 @@
 #extension-link:visited {
   color: white;
 }
+
+#clipboard-tab {
+  margin: 5px;
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+#clipboard-tab:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
