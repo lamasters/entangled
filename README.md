@@ -8,7 +8,7 @@ Check out the web app to sync your tabs in Safari, Firefox, or mobile [entangled
 
 Visit [entangled-tabs.vercel.app](https://entangled-tabs.vercel.app) to create an account.
 
-[![Entangled CI](https://github.com/lamasters/entangled/actions/workflows/node.js.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/node.js.yml) [![ESLint](https://github.com/lamasters/entangled/actions/workflows/eslint.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/eslint.yml)
+[![ESLint](https://github.com/lamasters/entangled/actions/workflows/eslint.yml/badge.svg)](https://github.com/lamasters/entangled/actions/workflows/eslint.yml)
 
 ## Installation
 
