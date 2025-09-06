@@ -1,14 +1,13 @@
-import { APPWRITE_CONFIG } from "./constants.js";
+import { SUPABASE_CONFIG } from "./constants.js";
+import { createClient } from "@supabase/supabase-js";
 import { getTabs } from "./tabs.js";
-import { Account, Client, Databases } from "appwrite";
 
 export class Session {
   constructor() {
-    this.client = new Client()
-      .setEndpoint(APPWRITE_CONFIG.ENDPOINT)
-      .setProject(APPWRITE_CONFIG.PROJECT_ID);
-    this.account = new Account(this.client);
-    this.database = new Databases(this.client);
+    this.client = createClient(
+      SUPABASE_CONFIG.ENDPOINT,
+      SUPABASE_CONFIG.PUBLIC_API_KEY,
+    );
   }
 }
 
@@ -24,8 +23,11 @@ export function createSession(
   async function submitLogin() {
     try {
       setLoading(true);
-      let res = await session.account.createEmailSession(email, password);
-      user.set(res.$id);
+      let { data } = await session.client.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+      user.set(data.user.id);
       await getTabs(session, user);
     } catch (e) {
       console.error(e);
@@ -60,11 +62,11 @@ export function createSession(
 export async function getSession(session, user, setTabs, setLoading) {
   try {
     setLoading(true);
-    let res = await session.account.get();
-    if (!res.$id) {
+    let { data } = await session.client.auth.getSession();
+    if (!data.session.user.id) {
       user.set(null);
     } else {
-      user.set(res.$id);
+      user.set(data.session.user.id);
       await getTabs(session, setTabs);
     }
   } catch (e) {

@@ -1,6 +1,4 @@
-export const APPWRITE_CONFIG = {
-  ENDPOINT: "https://cloud.appwrite.io/v1",
-  PROJECT_ID: "67ccb62c000eef23350c",
-  DATABASE_ID: "650a25486a53f6902000",
-  BUCKET_ID: "650a2552869d0ff7adf9",
+export const SUPABASE_CONFIG = {
+  ENDPOINT: "https://tfcrcoqvdowylhfnnnzo.supabase.co",
+  PUBLIC_API_KEY: "sb_publishable_W7KrCGJ-B2L3Jai0JZy-2Q_gD2SkfTl",
 };
