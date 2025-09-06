@@ -1,8 +1,11 @@
 import "./App.css";
-import { Loader } from "./components/Loader.js";
-import { createSession, getSession, Session } from "./session.js";
+
+import { Session, createSession, getSession } from "./session.js";
 import { addTab, tabItem } from "./tabs.js";
 import { useEffect, useMemo, useState } from "react";
+
+import { Loader } from "./components/Loader.js";
+
 class Hook {
   constructor(value, set) {
     this.value = value;
@@ -19,6 +22,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [tabs, setTabs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const user = useMemo(() => {
     return new Hook(id, setId);
@@ -55,9 +59,21 @@ function App() {
               password,
               setPassword,
               setLoading,
+              setError,
             )
           : null}
+        {error && !loading && <div id="error">{error}</div>}
         {loading ? <Loader /> : null}
+        {!loading && (
+          <a
+            href="https://entangled-tabs.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            id="signup"
+          >
+            Need an account?
+          </a>
+        )}
       </header>
     </div>
   );

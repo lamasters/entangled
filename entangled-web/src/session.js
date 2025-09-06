@@ -19,14 +19,18 @@ export function createSession(
   password,
   setPassword,
   setLoading,
+  setError,
 ) {
   async function submitLogin() {
     try {
       setLoading(true);
-      let { data } = await session.client.auth.signInWithPassword({
+      let { data, error } = await session.client.auth.signInWithPassword({
         email: email,
         password: password,
       });
+      if (error) {
+        setError(error.message);
+      }
       user.set(data.user.id);
       await getTabs(session, user);
     } catch (e) {
@@ -40,23 +44,23 @@ export function createSession(
     <>
       <h1>Entangled</h1>
       <h2>Sync your tabs between any browsers</h2>
-      <div>
-        <label className="login-item">Email:</label>
-        <input onChange={e => setEmail(e.target.value)} type="email" />
-        <label className="login-item">Password:</label>
-        <input onChange={e => setPassword(e.target.value)} type="password" />
-      </div>
-      <div id="login-button" onClick={submitLogin}>
-        Login
-      </div>
-      <a
-        href="https://entangled-tabs.vercel.app"
-        target="_blank"
-        rel="noreferrer"
-        id="signup"
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          setError("");
+          submitLogin();
+        }}
       >
-        Need an account?
-      </a>
+        <div>
+          <label className="login-item">Email:</label>
+          <input onChange={e => setEmail(e.target.value)} type="email" />
+          <label className="login-item">Password:</label>
+          <input onChange={e => setPassword(e.target.value)} type="password" />
+        </div>
+        <button id="login-button" type="submit">
+          Login
+        </button>
+      </form>
     </>
   );
 }

@@ -87,11 +87,14 @@
 }
 
 #login-button {
+  font-family: 'Space Mono', monospace;
+  text-decoration: none;
+  background: none;
   font-size: 14px;
   text-align: center;
   margin: 10px;
-  width: 50px;
-  height: 25px;
+  width: 60px;
+  height: 30px;
   line-height: 25px;
   color: white;
   border-style: solid;
@@ -114,4 +117,8 @@
 #signup:hover {
   cursor: pointer;
   text-decoration: none;
+}
+
+#error {
+  color: red;
 }

@@ -1,8 +1,11 @@
 import "./App.css";
-import { Loader } from "./components/Loader.js";
-import { createSession, getSession, Session } from "./session.js";
+
+import { Session, createSession, getSession } from "./session.js";
 import { addTab, tabItem } from "./tabs.js";
 import { useEffect, useMemo, useState } from "react";
+
+import { Loader } from "./components/Loader.js";
+
 class Hook {
   constructor(value, set) {
     this.value = value;
@@ -20,6 +23,7 @@ function App() {
   const [tabs, setTabs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("");
+  const [error, setError] = useState("");
 
   const user = useMemo(() => {
     return new Hook(id, setId);
@@ -79,17 +83,31 @@ function App() {
             password,
             setPassword,
             setLoading,
+            setError,
           )
         : null}
-      <a
-        href="https://chromewebstore.google.com/detail/entangled/bpladjoppoackkpoegnmfbbccemijcec"
-        target="_blank"
-        rel="noreferrer"
-        id="extension-link"
-      >
-        Get the browser extension
-      </a>
-      {loading ? <Loader /> : null}
+      {error && !loading && <div id="error">{error}</div>}
+      {loading && <Loader />}
+      {!loading && (
+        <>
+          <a
+            href="https://chromewebstore.google.com/detail/entangled/bpladjoppoackkpoegnmfbbccemijcec"
+            target="_blank"
+            rel="noreferrer"
+            id="extension-link"
+          >
+            Get the browser extension
+          </a>
+          <a
+            href="https://entangled-tabs.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            id="signup"
+          >
+            Need an account?
+          </a>
+        </>
+      )}
     </div>
   );
 }
